@@ -41,7 +41,7 @@ describe('Stack', () => {
   });
 
   describe('Stack Behavior', () => {
-    it('Should remove the most recently added of three nodes (FIFO)', () => {
+    it('Should remove the most recently added of three nodes (LIFO)', () => {
       stack.push('A');
       stack.push('B');
       stack.push('C');
@@ -116,22 +116,22 @@ describe('Stack', () => {
     describe('pop', () => {
       it('Should not accept any input parameters', () => {
         expect(stack.pop.length).to.equal(0);
-      });      
+      });
 
       it('Should not throw an error when calling pop on an empty stack', () => {
         expect(function() {stack.pop()}).to.not.throw();
-      });      
+      });
 
       it('Should return null if called on an empty stack', () => {
         expect(stack.pop()).to.be.equal(null);
-      });      
+      });
 
       it('Should reassign the top pointer to null if there is only one node in the stack', () => {
         stack.push('A');
         expect(stack.top.value).to.equal('A');
         stack.pop();
         expect(stack.top).to.equal(null);
-      });      
+      });
 
       it('Should reassign the top pointer to the node just below the top node for stacks of size two or greater', () => {
         stack.push('A');
@@ -142,7 +142,7 @@ describe('Stack', () => {
         expect(stack.top.value).to.equal('B');
         stack.pop();
         expect(stack.top.value).to.equal('A');
-      });      
+      });
 
       it('Should decrement the stack\'s length by one each time a node is removed from the stack', () => {
         stack.push('A');
@@ -153,21 +153,21 @@ describe('Stack', () => {
         expect(stack.length).to.equal(2);
         stack.pop();
         expect(stack.length).to.equal(1);
-      });      
+      });
 
       it('Should return the value of the node removed from the stack', () => {
         stack.push('A');
         stack.push('B');
         expect(stack.pop()).to.equal('B');
         expect(stack.pop()).to.equal('A');
-      });            
+      });
     });
 
     describe('size', () => {
       it('Should return a size of 0 for a new stack', () => {
         expect(stack.size()).to.equal(0);
       });
-      
+
       it('Should return a size of 2 after two nodes are added to the stack', () => {
         stack.push('A');
         stack.push('B');
