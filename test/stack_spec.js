@@ -7,7 +7,7 @@ describe('Stack', () => {
 
   beforeEach(() => {
     stack = new Stack();
-  }); 
+  });
 
   describe('Node Constructor', () => {
     it('Should exist', () => {
@@ -24,7 +24,7 @@ describe('Stack', () => {
       expect(node).to.have.property('next');
     });
   });
-  
+
   describe('Stack Constructor', () => {
     it('Should exist', () => {
       expect(Stack).to.exist;
@@ -33,10 +33,9 @@ describe('Stack', () => {
     it('Should be a function (ES6 classes are "special functions")', () => {
       expect(Stack).to.be.a('function');
     });
-    
-    it('Should have top, bottom, and length properties', () => {
+
+    it('Should have top, and length properties', () => {
       expect(stack).to.have.property('top');
-      expect(stack).to.have.property('bottom');
       expect(stack).to.have.property('length');
     });
   });
@@ -76,20 +75,18 @@ describe('Stack', () => {
         expect(stack.top.value).to.equal('A');
       });
 
-      it('Should reassign both the top and bottom pointers when a new node is added to the top of an empty stack', () => {
+      it('Should reassign both the top pointer when a new node is added to the top of an empty stack', () => {
         stack.push('A');
         expect(stack.top.value).to.equal('A');
-        expect(stack.bottom.value).to.equal('A');
+
       });
 
-      it('Should reassign only the top pointer when new nodes are added to the top of the stack of size one or greater', () => {
+      it('Should reassign the top pointer when new nodes are added to the top of the stack of size one or greater', () => {
         stack.push('A');
         stack.push('B');
         expect(stack.top.value).to.equal('B');
-        expect(stack.bottom.value).to.equal('A');
         stack.push('C');
         expect(stack.top.value).to.equal('C');
-        expect(stack.bottom.value).to.equal('A');
       });
 
       it('Should point the next property of the top node to the node that precedes it for stacks of size one or greater', () => {
@@ -129,13 +126,11 @@ describe('Stack', () => {
         expect(stack.pop()).to.be.equal(null);
       });      
 
-      it('Should reassign the top and bottom pointers to null if there is only one node in the stack', () => {
+      it('Should reassign the top pointer to null if there is only one node in the stack', () => {
         stack.push('A');
         expect(stack.top.value).to.equal('A');
-        expect(stack.bottom.value).to.equal('A');
         stack.pop();
         expect(stack.top).to.equal(null);
-        expect(stack.bottom).to.equal(null);
       });      
 
       it('Should reassign the top pointer to the node just below the top node for stacks of size two or greater', () => {
